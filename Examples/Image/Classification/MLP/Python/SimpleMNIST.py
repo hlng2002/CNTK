@@ -9,7 +9,7 @@ import sys
 import os
 from cntk import Trainer, minibatch_size_schedule 
 from cntk.io import MinibatchSource, CTFDeserializer, StreamDef, StreamDefs, INFINITELY_REPEAT, FULL_DATA_SWEEP
-from cntk.device import cpu, set_default_device
+from cntk.device import cpu, try_set_default_device
 from cntk.learner import sgd, learning_rate_schedule, UnitType
 from cntk.ops import input_variable, cross_entropy_with_softmax, classification_error, relu, element_times, constant
 from cntk.utils import ProgressPrinter
@@ -118,7 +118,7 @@ def simple_mnist():
 if __name__=='__main__':
     # Specify the target device to be used for computing, if you do not want to
     # use the best available one, e.g.
-    # set_default_device(cpu())
+    # try_set_default_device(cpu())
 
     error = simple_mnist()
     print("Error: %f" % error)

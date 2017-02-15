@@ -10,7 +10,7 @@ import sys
 import os
 from cntk import Trainer, Axis
 from cntk.io import MinibatchSource, CTFDeserializer, StreamDef, StreamDefs, INFINITELY_REPEAT, FULL_DATA_SWEEP
-from cntk.device import cpu, set_default_device
+from cntk.device import cpu, try_set_default_device
 from cntk.learner import learning_rate_schedule, UnitType, momentum_sgd, momentum_as_time_constant_schedule
 from cntk.ops import input_variable, cross_entropy_with_softmax, classification_error, sequence, past_value, future_value, element_select, alias, hardmax
 from cntk.ops.functions import CloneMethod
@@ -253,7 +253,7 @@ def sequence_to_sequence_translator(debug_output=False, run_test=False):
 if __name__ == '__main__':
     # Specify the target device to be used for computing, if you do not want to
     # use the best available one, e.g.
-    #set_default_device(cpu())
+    #try_set_default_device(cpu())
 
     error = sequence_to_sequence_translator(debug_output=False, run_test=True)
     print("Error: %f" % error)

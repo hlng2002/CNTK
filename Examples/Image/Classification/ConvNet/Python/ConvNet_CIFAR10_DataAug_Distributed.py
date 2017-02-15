@@ -197,7 +197,7 @@ if __name__=='__main__':
     if args['datadir'] is not None:
         data_path = args['datadir']
     if args['device'] is not None:
-        cntk.device.set_default_device(cntk.device.gpu(args['device']))
+        cntk.device.try_set_default_device(cntk.device.gpu(args['device']))
 
     mean_data=os.path.join(data_path, 'CIFAR-10_mean.xml')
     train_data=os.path.join(data_path, 'train_map.txt')
